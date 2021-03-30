@@ -4,10 +4,11 @@ from requests import get
 from random import choice
 from googletrans import LANGUAGES
 from googletrans import Translator
+
 #--------------------------------------
 
-import aqua_comandos  
-import uptime
+import aqua_comandos   
+import uptime         #running thread listening port 8080
 
 #--------------------------------------
 
@@ -16,9 +17,9 @@ bot = discord.Client()
 translator = Translator()
 
 comandos = {
-    prefix+'ajuda': [aqua_comandos.ajuda, prefix+"ajuda    #lista os comandos"],
-    prefix+'traduz': [aqua_comandos.traduz, prefix+'traduz [texto] [origem] [destino]    #traduz o [texto] da lingua de [origem] para linga de [destino].'],
-    prefix+'linguas': [aqua_comandos.linguas, prefix+'linguas    #mostra as linguas para traducao'],
+    prefix+'ajuda': [aqua_comandos.ajuda, prefix+"ajuda    #lista os comandos.\n"],
+    prefix+'traduz': [aqua_comandos.traduz, prefix+'traduz [texto] [origem] [destino]    #traduz o [texto] da lingua de [origem] para linga de [destino].\n'],
+    prefix+'linguas': [aqua_comandos.linguas, prefix+'linguas    #mostra as linguas para traducao.\n'],
 
   }
 
@@ -35,7 +36,7 @@ async def on_ready():
 
 
 
-#______________________________B O M  D I A____________________________________________________________
+#==================================== おはよう ====================================
 @bot.event
 async def on_voice_state_update(member, before, after):
   ヤルカシャソル = '361301183249252355'
@@ -45,7 +46,7 @@ async def on_voice_state_update(member, before, after):
 
 
 
-#______________________________L I S T E N I N G  C H A T____________________________________________________________
+#==================================== LISTENING  CHAT ====================================
 @bot.event
 async def on_message(message):
   lista_palavras = get('https://www.ime.usp.br/~pf/dicios/br-sem-acentos.txt').text.split('\n')
@@ -70,9 +71,8 @@ async def on_message(message):
   
 
 
-#______________________________M A I N____________________________________________________________
+#==================================== MAIN ====================================
 def main():
   bot.run(getenv('discord_token'))
-
 
 main()
