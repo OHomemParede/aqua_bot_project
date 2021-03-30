@@ -1,1 +1,1 @@
-# aqua_bot_project
+# aqua is a bot discord
